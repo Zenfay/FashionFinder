@@ -1,0 +1,11 @@
+[
+  {
+    "title": "Photo 1",
+    "thumbnailUrl": "/thumbnails/photo1.jpg"
+  },
+  {
+    "title": "Photo 2",
+    "thumbnailUrl": "/thumbnails/photo2.jpg"
+  }
+
+]

@@ -1,6 +1,33 @@
 <script>
+    import { onMount } from 'svelte';
+    import { writable } from 'svelte/store';
     import bg from '$lib/assets/NikePic.jpg';
     import { goto } from '$app/navigation';
+
+    let photos = writable([]);
+
+    onMount(async () => {
+        console.log("Fetching photos...");
+        await fetchPhotos();
+    });
+
+    
+    async function fetchPhotos() {
+        try {
+            const res = await fetch('/photos.json');
+            console.log("Response status:", res.status);
+
+            if (res.ok) {
+                const photosData = await res.json();
+                photos.set(photosData); // Update the value of the writable store
+                console.log("Photos:", photosData);
+            } else {
+                console.error("Failed to fetch photos:", res.statusText);
+            }
+        } catch (error) {
+            console.error("Error fetching photos:", error);
+        }
+    }
 </script>
 
 <div class="container">
@@ -12,6 +39,16 @@
     </div>
 </div>
 
+<div class="photos">
+    {#each $photos as photo}
+        <figure>
+            <img src={photo.thumbnailUrl} alt={photo.title} />
+            <figcaption>{photo.title}</figcaption>
+        </figure>
+    {:else}
+        <p>loading...</p>
+    {/each}
+</div>
 <style>
     .container {
         position: relative;
