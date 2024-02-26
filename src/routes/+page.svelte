@@ -2,6 +2,7 @@
     import { onMount } from 'svelte';
     import { writable } from 'svelte/store';
     import bg from '$lib/assets/NikePic.jpg';
+    import { goto } from '$app/navigation';
     let username = '';
     let password = '';
 
@@ -46,6 +47,9 @@
             <input bind:value={password} type="password" placeholder="Password" />
             <button>Login</button>
         </div>
+        <div class="signin-container">
+            <button>Sign Up</button>
+        </div>
         
     </div>
 </div>
@@ -66,6 +70,13 @@
         width: 100%;
     }
     .login-container {
+        display: flex;
+        flex-direction: column;
+        width: 300px;
+        margin: 0 auto;
+        padding: 20px;
+    }
+    .sign-container {
         display: flex;
         flex-direction: column;
         width: 300px;
