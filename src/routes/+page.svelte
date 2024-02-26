@@ -2,7 +2,6 @@
     import { onMount } from 'svelte';
     import { writable } from 'svelte/store';
     import bg from '$lib/assets/NikePic.jpg';
-    import { goto } from '$app/navigation';
     let username = '';
     let password = '';
 
@@ -36,6 +35,7 @@
 
 
 <div class="container">
+    <!-- svelte-ignore a11y-img-redundant-alt -->
     <img src={bg} alt="Background Image"/>
     <div class="overlay">
         <h1>Fashion Finder</h1>
