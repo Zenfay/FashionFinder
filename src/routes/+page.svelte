@@ -54,10 +54,26 @@
         position: relative;
         width: 100%;
     }
-    img {
-        display: block;
-        width: 100%;
+    .photos {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .photos figure {
+        margin: 10px;
+        text-align: center;
+    }
+
+    .photos img {
+        max-width: 200px;
         height: auto;
+        border-radius: 5px;
+    }
+
+    .photos figcaption {
+        margin-top: 5px;
+        font-size: 14px;
     }
     .overlay {
         position: absolute;
