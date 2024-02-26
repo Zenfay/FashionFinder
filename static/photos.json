@@ -6,6 +6,10 @@
   {
     "title": "Photo 2",
     "thumbnailUrl": "/thumbnails/photo2.jpg"
+  },
+  {
+    "title": "Matthew is a little boy dater",
+    "thumbnailUrl": "/thumbnails/photo3.jpg"
   }
 
 ]
