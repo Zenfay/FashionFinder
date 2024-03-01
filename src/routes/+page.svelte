@@ -18,7 +18,7 @@
 
     
     
-    async function fetchPhotos() {
+        async function fetchPhotos() {
         try {
             const res = await fetch('/photos.json');
             console.log("Response status:", res.status);
@@ -34,7 +34,46 @@
             console.error("Error fetching photos:", error);
         }
     }
+    function addTag(photo, tagInput) {
+        const tag = tagInput.value.trim();
+        if (tag && !photo.tags.includes(tag)) {
+            photo.tags = [...photo.tags, tag]; // Create a new array
+            photos.update(values => {
+                return values.map(p => p.id === photo.id ? photo : p);
+            });
+        }
+        tagInput.value = '';
+    }
+
+
+        function stringToColor(str) {
+        let hash = 0;
+        for (let i = 0; i < str.length; i++) {
+            hash = str.charCodeAt(i) + ((hash << 5) - hash);
+        }
+        let color = '#';
+        for (let i = 0; i < 3; i++) {
+            const value = (hash >> (i * 8)) & 0xFF;
+            color += ('00' + value.toString(16)).substr(-2);
+        }
+        return color;
+    }
+
+    let searchTag = '';
+    let highlightedPhotos = [];
+
+    $: highlightedPhotos = $photos.map(photo => ({
+        ...photo,
+        highlight: searchTag && photo.tags && photo.tags.includes(searchTag)
+    }));
+
+    function search() {
+        // This function will be called when the search button is clicked
+    }
+
+
 </script>
+
 
 
 
@@ -61,16 +100,38 @@
     </div>
 </div>
 
+<div class="search">
+    <input bind:value={searchTag} placeholder="Search by tag" />
+    <button on:click={search}>Enter</button>
+</div>
+
 <div class="photos">
-    {#each $photos as photo}
-        <figure>
+    {#each highlightedPhotos as photo (photo.id)}
+        <figure class:highlight={photo.highlight}>
             <img src={photo.thumbnailUrl} alt={photo.title} />
             <figcaption>{photo.title}</figcaption>
+            {#if photo.tags && photo.tags.length}
+                <div class="tags">
+                    {#each photo.tags as tag (tag)}
+                        <span class="tag" style="background-color: {stringToColor(tag)};">{tag}</span>
+                    {/each}
+                </div>
+            {/if}
+            <form on:submit|preventDefault={e => addTag(photo, e.target.elements.tag)}>
+                <input name="tag" placeholder="Add a tag" />
+                <button type="submit">Add
+</button>
+            </form>
         </figure>
     {:else}
         <p>loading...</p>
     {/each}
 </div>
+
+
+
+
+
 <style>
     .container {
         position: relative;
@@ -143,5 +204,33 @@
     }
     button:hover {
         background-color: #0056b3;
+    }
+    .tags {
+        margin-top: 5px;
+    }
+
+    .tag {
+        display: inline-block;
+        margin-right: 5px;
+        padding: 2px 5px;
+        background-color: #add8e6; /* light blue */
+        color: black;
+        border-radius: 3px;
+        font-size: 12px;
+    }
+    .search {
+        margin: 20px;
+        text-align: center;
+    }
+
+    .search input {
+        padding: 10px;
+        font-size: 1em;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+    }
+
+    .highlight {
+        box-shadow: 0 0 10px #ff0000; /* red glow */
     }
 </style>

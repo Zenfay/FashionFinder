@@ -1,15 +1,20 @@
 [
   {
+    "id": 1,
     "title": "Photo 1",
-    "thumbnailUrl": "/thumbnails/photo1.jpg"
+    "thumbnailUrl": "/thumbnails/photo1.jpg",
+    "tags": []
   },
   {
+    "id": 2,
     "title": "Photo 2",
-    "thumbnailUrl": "/thumbnails/photo2.jpg"
+    "thumbnailUrl": "/thumbnails/photo2.jpg",
+    "tags": []
   },
   {
+    "id": 3,
     "title": "Matthew is a little boy dater",
-    "thumbnailUrl": "/thumbnails/photo3.jpg"
+    "thumbnailUrl": "/thumbnails/photo3.jpg",
+    "tags": []
   }
-
 ]
