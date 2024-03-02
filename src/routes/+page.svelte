@@ -148,9 +148,9 @@
 </div>
 
 <div class="photos">
-    {#each imageUrls as photo (photo.id)}
-        <figure class:highlight={photo.highlight}>
-            <img src={photo} alt="Uploaded Image" />
+    {#each imageUrls as photo}
+        <figure>
+            <img class="image-item" src={photo.url} alt="Uploaded Image" />
             {#if photo.tags && photo.tags.length}
                 <div class="tags">
                     {#each photo.tags as tag (tag)}
@@ -158,10 +158,9 @@
                     {/each}
                 </div>
             {/if}
-            <form on:submit|preventDefault={e => addTag(photo, e.target.elements.tag)}>
+            <form on:submit|preventDefault={e => addTag(photo, e.target.elements.tag.value)}>
                 <input name="tag" placeholder="Add a tag" />
-                <button type="submit">Add
-</button>
+                <button type="submit">Add</button>
             </form>
         </figure>
     {/each}
@@ -172,13 +171,6 @@
   </div>
 
 <style>
-  .image-item {
-    max-width: 100%;
-    max-height: 200px;
-    margin: 10px;
-    object-fit: cover;
-  }
-
   .upload-button {
     margin-bottom: 20px;
   }

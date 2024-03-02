@@ -16,5 +16,11 @@
     "title": "Matthew is a little boy dater",
     "thumbnailUrl": "/thumbnails/photo3.jpg",
     "tags": []
+  },
+  {
+    "id": 4,
+    "title": "photo 4",
+    "thumbnailUrl": "/thumbnails/photo4.jpg",
+    "tags": []
   }
 ]
