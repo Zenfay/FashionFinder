@@ -10,6 +10,7 @@
 
 
     let photos = writable([]);
+    let uploadedImage = writable(null);
 
     onMount(async () => {
         console.log("Fetching photos...");
@@ -71,6 +72,25 @@
         // This function will be called when the search button is clicked
     }
 
+    let imageUrls = [];
+
+    function handleFileUpload(event) {
+    const files = event.target.files;
+    const reader = new FileReader();
+
+    for (let i = 0; i < files.length; i++) {
+      const file = files[i];
+
+      reader.onloadend = () => {
+        imageUrls = [...imageUrls, reader.result];
+      };
+
+      if (file) {
+        reader.readAsDataURL(file);
+      }
+    }
+  }
+
 
 </script>
 
@@ -128,9 +148,14 @@
     {/each}
 </div>
 
-
-
-
+<div>
+    <input type="file" accept="image/*" multiple on:change={handleFileUpload} />
+    <div class="image-container">
+      {#each imageUrls as imageUrl}
+        <img class="image-item" src={imageUrl} alt="Uploaded Image" />
+      {/each}
+    </div>
+  </div>
 
 <style>
     .container {
