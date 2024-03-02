@@ -129,7 +129,6 @@
     {#each highlightedPhotos as photo (photo.id)}
         <figure class:highlight={photo.highlight}>
             <img src={photo.thumbnailUrl} alt={photo.title} />
-            <figcaption>{photo.title}</figcaption>
             {#if photo.tags && photo.tags.length}
                 <div class="tags">
                     {#each photo.tags as tag (tag)}
@@ -148,16 +147,39 @@
     {/each}
 </div>
 
-<div>
+<div class="photos">
+    {#each imageUrls as photo}
+      <img class="image-item" src={photo} alt="Uploaded Image" />
+      {#if photo.tags && photo.tags.length}
+                <div class="tags">
+                    {#each photo.tags as tag (tag)}
+                        <span class="tag" style="background-color: {stringToColor(tag)};">{tag}</span>
+                    {/each}
+                </div>
+            {/if}
+            <form on:submit|preventDefault={e => addTag(photo, e.target.elements.tag)}>
+                <input name="tag" placeholder="Add a tag" />
+                <button type="submit">Add
+</button>
+            </form>
+    {/each}
+</div>
+  
+  <div class="upload-button">
     <input type="file" accept="image/*" multiple on:change={handleFileUpload} />
-    <div class="image-container">
-      {#each imageUrls as imageUrl}
-        <img class="image-item" src={imageUrl} alt="Uploaded Image" />
-      {/each}
-    </div>
   </div>
 
 <style>
+  .image-item {
+    max-width: 100%;
+    max-height: 200px;
+    margin: 10px;
+    object-fit: cover;
+  }
+
+  .upload-button {
+    margin-bottom: 20px;
+  }
     .container {
         position: relative;
         width: 100%;
