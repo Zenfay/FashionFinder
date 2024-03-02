@@ -128,7 +128,7 @@
 <div class="photos">
     {#each highlightedPhotos as photo (photo.id)}
         <figure class:highlight={photo.highlight}>
-            <img src={photo.thumbnailUrl} alt={photo.title} />
+            <img src={photo.thumbnailUrl} alt="Uploaded Image" />
             {#if photo.tags && photo.tags.length}
                 <div class="tags">
                     {#each photo.tags as tag (tag)}
@@ -148,9 +148,10 @@
 </div>
 
 <div class="photos">
-    {#each imageUrls as photo}
-      <img class="image-item" src={photo} alt="Uploaded Image" />
-      {#if photo.tags && photo.tags.length}
+    {#each imageUrls as photo (photo.id)}
+        <figure class:highlight={photo.highlight}>
+            <img src={photo} alt="Uploaded Image" />
+            {#if photo.tags && photo.tags.length}
                 <div class="tags">
                     {#each photo.tags as tag (tag)}
                         <span class="tag" style="background-color: {stringToColor(tag)};">{tag}</span>
@@ -162,6 +163,7 @@
                 <button type="submit">Add
 </button>
             </form>
+        </figure>
     {/each}
 </div>
   
@@ -215,10 +217,6 @@
         border-radius: 5px;
     }
 
-    .photos figcaption {
-        margin-top: 5px;
-        font-size: 14px;
-    }
     .overlay {
         position: absolute;
         top: 50%;
