@@ -3,7 +3,6 @@
     import { writable } from 'svelte/store';
     import bg from '$lib/assets/NikePic.jpg';
     import { goto } from '$app/navigation';
-    import { Link } from 'svelte-routing';
 
     let username = '';
     let password = '';

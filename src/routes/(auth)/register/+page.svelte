@@ -18,7 +18,7 @@
     </div>
   
     {#if form?.user}
-      <p class="error">Username is taken.</p>
+      <p class="error">Username is taken</p>
     {/if}
   
     <button type="submit">Register</button>
