@@ -24,4 +24,3 @@
   <main>
     <slot />
   </main>
-  

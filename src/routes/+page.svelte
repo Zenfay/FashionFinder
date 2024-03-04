@@ -11,14 +11,13 @@
     <div class="overlay">
         <h1>Fashion Finder</h1>
         <h2>Unique clothes for a unique you</h2>
-        
-        <!--
+        <div class="login-container">
+            <button>Login</button>
+            <button>Sign Up</button>
 
-            <div class="signin-container">
-            <Link to = "/login">
-                <button>Sign Up</button>
-            </Link>
-        -->
+        </div>
+        
+        
     </div>
 </div>
 
@@ -42,6 +41,21 @@
         font-family: 'Arial', sans-serif;
         font-size: 2em;
         text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    }
+    button {
+        display: inline-block;
+        margin-top: 20px;
+        padding: 10px 20px;
+        font-size: 1.5em;
+        color: white;
+        background-color: #007BFF;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        text-shadow: none;
+    }
+    button:hover {
+        background-color: #0056b3;
     }
     
 </style>

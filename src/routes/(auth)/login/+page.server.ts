@@ -1,6 +1,7 @@
 import { fail, redirect } from '@sveltejs/kit'
 import bcrypt from 'bcrypt'
 import type { Action, Actions, PageServerLoad } from './$types'
+import { goto } from '$app/navigation';
 
 import { db } from '$lib/database'
 
@@ -49,6 +50,6 @@ const login: Action = async ({ cookies, request }) => {
     maxAge: 60 * 60 * 24 * 30,
   })
 
-  redirect(302, '/')
+  redirect(302, '/posts')
 }
 export const actions: Actions = { login }
