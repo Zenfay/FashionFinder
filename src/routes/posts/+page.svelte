@@ -96,30 +96,14 @@
 
 
 
-<div class="container">
-    <!-- svelte-ignore a11y-img-redundant-alt -->
-    <img src={bg} alt="Background Image"/>
-    <div class="overlay">
-        <h1>Fashion Finder</h1>
-        <h2>Unique clothes for a unique you</h2>
-    </div>
-        
-        <!--
-
-            <div class="signin-container">
-            <Link to = "/login">
-                <button>Sign Up</button>
-            </Link>
-        -->
-</div>
-
 <div class="search">
     <input bind:value={searchTag} placeholder="Search by tag" />
     <button on:click={search}>Enter</button>
 </div>
 
 <div class="photos">
-    {#each highlightedPhotos.slice(0, counter) as photo (photo.id)}
+    {#each highlightedPhotos as photo (photo.id)}
+    <!--.slice(0, counter)-->
         <figure class:highlight={photo.highlight}>
             <img src={photo.thumbnailUrl} alt="Uploaded Image" />
             {#if photo.tags && photo.tags.length}
@@ -140,7 +124,7 @@
     {/each}
 </div>
 
-<!--<div class="photos">
+<div class="photos">
     {#each imageUrls as photo}
             <figure class:highlight={photo.highlight}>
                 <img src={photo} alt="Uploaded Image" />
@@ -158,7 +142,7 @@
             </form>
         </figure>
     {/each}
-</div>-->
+</div>
   
   <div class="upload-button">
     <input type="file" accept="image/*" multiple on:change={handleFileUpload} />
