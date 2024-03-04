@@ -22,5 +22,23 @@
     "title": "photo 4",
     "thumbnailUrl": "/thumbnails/photo4.jpg",
     "tags": []
+  },
+  {
+    "id": 5,
+    "title": "photo 5",
+    "thumbnailUrl": "/thumbnails/photo5.jpg",
+    "tags": []
+  },
+  {
+    "id": 6,
+    "title": "photo 6",
+    "thumbnailUrl": "/thumbnails/photo6.jpg",
+    "tags": []
+  },
+  {
+    "id": 7,
+    "title": "photo 7",
+    "thumbnailUrl": "/thumbnails/photo7.jpg",
+    "tags": []
   }
 ]
