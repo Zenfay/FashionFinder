@@ -23,4 +23,34 @@
   
     <button type="submit">Register</button>
   </form>
+
+<style>
+  input {
+        margin-bottom: 10px;
+        padding: 10px;
+        font-size: 1em;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+    }
+    button {
+        display: inline-block;
+        margin-top: 20px;
+        padding: 10px 20px;
+        font-size: 1.5em;
+        color: white;
+        background-color: #007BFF;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        text-shadow: none;
+    }
+    button:hover {
+        background-color: #0056b3;
+    }
+    h1 {
+        font-family: 'Arial', sans-serif;
+        font-size: 4em;
+        text-shadow: 2px 2px 4px white;
+    }
+</style>
   

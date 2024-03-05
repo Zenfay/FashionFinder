@@ -1,7 +1,14 @@
 <script>
     import bg from '$lib/assets/NikePic.jpg';
-</script>
+    import { goto } from '$app/navigation';
+    const handleClick = () => {
+        goto('/login');
+    }
 
+    const hc = () => {
+        goto('/register');
+    }
+</script>
 
 
 
@@ -12,8 +19,8 @@
         <h1>Fashion Finder</h1>
         <h2>Unique clothes for a unique you</h2>
         <div class="login-container">
-            <button>Login</button>
-            <button>Sign Up</button>
+            <button on:click = {handleClick}>Login</button>
+            <button on:click = {hc}>Sign Up</button>
 
         </div>
         
@@ -21,9 +28,13 @@
     </div>
 </div>
 
+<body>
+    
+</body>
 
-<style>
-
+<style global>
+    @import './src/global.css';
+    
     .overlay {
         position: absolute;
         top: 50%;
@@ -57,5 +68,6 @@
     button:hover {
         background-color: #0056b3;
     }
+    
     
 </style>

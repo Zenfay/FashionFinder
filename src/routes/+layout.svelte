@@ -3,14 +3,10 @@
   </script>
   
   <svelte:head>
-    <title>SvelteKit Auth</title>
+    <!--<title>SvelteKit Auth</title>-->
   </svelte:head>
   
   <nav>
-    {#if !$page.data.user}
-      <a href="/login">Login</a>
-      <a href="/register">Register</a>
-    {/if}
   
     {#if $page.data.user}
       <a href="/admin">Admin</a>

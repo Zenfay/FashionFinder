@@ -147,8 +147,11 @@
   <div class="upload-button">
     <input type="file" accept="image/*" multiple on:change={handleFileUpload} />
   </div>
+<body>
 
-<style>
+</body>
+<style global>
+    @import './src/global.css';
   .upload-button {
     margin-bottom: 20px;
   }
