@@ -74,21 +74,27 @@
     function handleFileUpload(event) {
     const files = event.target.files;
     const reader = new FileReader();
-
     for (let i = 0; i < files.length; i++) {
-      const file = files[i];
+        const file = files[i];
+        reader.onloadend = () => {
+            // Create a new photo object for the uploaded image
+            const newPhoto = {
+                id: Date.now(), // Use the current timestamp as a unique ID
+                title: `Uploaded Image ${i + 1}`,
+                thumbnailUrl: reader.result,
+                tags: []
+            };
 
-      reader.onloadend = () => {
-        imageUrls = [...imageUrls, reader.result];
-        counter = counter + 1;
-      };
+            // Add the new photo to the photos store
+            photos.update(values => [...values, newPhoto]);
 
-      if (file) {
-        reader.readAsDataURL(file);
-      }
+            counter = counter + 1;
+        };
+        if (file) {
+            reader.readAsDataURL(file);
+        }
     }
-  }
-
+}
 
 
 </script>
