@@ -1,6 +1,7 @@
 <script>
     import bg from '$lib/assets/NikePic.jpg';
     import { goto } from '$app/navigation';
+
     const handleClick = () => {
         goto('/login');
     }
@@ -10,31 +11,38 @@
     }
 </script>
 
-
-
 <div class="container">
     <!-- svelte-ignore a11y-img-redundant-alt -->
-    <img src={bg} alt="Background Image"/>
+    <img class="bg" src={bg} alt="Background Image"/>
     <div class="overlay">
         <h1>Fashion Finder</h1>
         <h2>Unique clothes for a unique you</h2>
         <div class="login-container">
-            <button on:click = {handleClick}>Login</button>
-            <button on:click = {hc}>Sign Up</button>
-
+            <button on:click={handleClick}>Login</button>
+            <button on:click={hc}>Sign Up</button>
         </div>
-        
-        
     </div>
 </div>
-
-<body>
-    
-</body>
 
 <style global>
     @import './src/global.css';
     
+    .bg {
+        animation: zoom 10s ease-in-out infinite;
+    }
+
+    @keyframes zoom {
+        0% {
+            transform: scale(1);
+        }
+        50% {
+            transform: scale(1.1);
+        }
+        100% {
+            transform: scale(1);
+        }
+    }
+
     .overlay {
         position: absolute;
         top: 50%;
@@ -43,17 +51,30 @@
         text-align: center;
         color: white;
     }
-    h1 {
+    h1, h2 {
         font-family: 'Arial', sans-serif;
-        font-size: 4em;
         text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        animation: slide-in 2s ease-out;
+    }
+    h1 {
+        font-size: 4em;
     }
     h2 {
-        font-family: 'Arial', sans-serif;
         font-size: 2em;
-        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
     }
-    button {
+
+    @keyframes slide-in {
+        0% {
+            transform: translateX(-100%);
+            opacity: 0;
+        }
+        100% {
+            transform: translateX(0);
+            opacity: 1;
+        }
+    }
+
+ button {
         display: inline-block;
         margin-top: 20px;
         padding: 10px 20px;
