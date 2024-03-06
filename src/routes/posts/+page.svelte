@@ -13,7 +13,9 @@
         console.log("Fetching photos...");
         await fetchPhotos();
     });
-
+    const handleClick = () => {
+        goto('/');
+    }
     
     
         async function fetchPhotos() {
@@ -100,7 +102,9 @@
 </script>
 
 
-
+<div class = "logout">
+    <button on:click = {handleClick}>Log Out</button>
+</div>
 
 <div class="search">
     <input bind:value={searchTag} placeholder="Search by tag" />
